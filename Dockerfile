@@ -7,4 +7,4 @@ ADD . /work
 
 # Install any needed packages specified in requirements.txt
 RUN pacman -Sy --noconfirm &&\
-    pacman -S git arm-none-eabi-gcc arm-none-eabi-newlib make --noconfirm
+    pacman -S git arm-none-eabi-gcc arm-none-eabi-newlib cmake make --noconfirm
