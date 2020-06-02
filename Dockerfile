@@ -5,6 +5,5 @@ WORKDIR /work
 
 ADD . /work
 
-# Install any needed packages specified in requirements.txt
 RUN pacman -Syu --noconfirm &&\
-    pacman -S git arm-none-eabi-gcc arm-none-eabi-newlib cmake make ninja --noconfirm
+    pacman -S git arm-none-eabi-gcc arm-none-eabi-newlib cmake make ninja python --noconfirm
