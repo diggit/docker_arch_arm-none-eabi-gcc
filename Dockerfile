@@ -1,4 +1,4 @@
-FROM archlinux/base:latest
+FROM archlinux/archlinux:latest
 MAINTAINER Patrik Bachan (xorly) <patrikbachan@gmail.com>
 LABEL Description="Image for building and debugging arm-embedded projects from git"
 WORKDIR /work
