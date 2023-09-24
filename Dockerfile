@@ -33,6 +33,9 @@ RUN pacman-key --init &&\
     pacman -S\
         boost\
         ghostscript\
+	doxygen\
+	graphviz\
+	psutils\
         --asdeps --noconfirm&&\
     useradd --no-create-home --shell=/bin/bash build && usermod -L build &&\
     mkdir build &&\
