@@ -6,7 +6,8 @@ WORKDIR /work
 ADD . /work
 
 RUN pacman-key --init &&\
-    pacman -Suy --noconfirm &&\
+    pacman -Sy --noconfirm &&\
+    pacman -S archlinux-keyring --noconfirm &&\
     pacman -S\
         base-devel\
         arm-none-eabi-gcc\
@@ -33,9 +34,9 @@ RUN pacman-key --init &&\
     pacman -S\
         boost\
         ghostscript\
-	doxygen\
-	graphviz\
-	psutils\
+        doxygen\
+        graphviz\
+        psutils\
         --asdeps --noconfirm&&\
     useradd --no-create-home --shell=/bin/bash build && usermod -L build &&\
     mkdir build &&\
@@ -44,11 +45,12 @@ USER build
 RUN cd build &&\
     git clone "https://aur.archlinux.org/srecord.git" &&\
     cd srecord &&\
-    makepkg
+    makepkg -c
 USER root
 RUN cd build/srecord &&\
     pacman -U *.pkg.tar* --noconfirm &&\
     pacman -Rs $(pacman -Qdtq) --noconfirm &&\
     pacman -Scc --noconfirm &&\
     cd ../.. &&\
-    rm -rf build
+    rm -rf build &&\
+    pacman -Scc --noconfirm 
